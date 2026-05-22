@@ -43,11 +43,10 @@ def generate_dataset(n: int) -> pd.DataFrame:
         elif ratio > 0.3:
             risk += 0.15
             
-        # 2. Account Age Trust factor
-        if account_age[i] > 730:      # 2+ years
-            risk -= 0.15
-        elif account_age[i] < 30:     # < 1 month
-            risk += 0.2
+        # 2. Account Age Trust factor (Continuous sliding scale)
+        # 0 days = +0.25 risk, 2000+ days = -0.25 risk
+        age_clamped = min(account_age[i], 2000)
+        risk += 0.25 - (age_clamped / 2000) * 0.5
             
         # 3. Return time
         if average_return_time[i] > 20: # taking very long to return is sketchy
