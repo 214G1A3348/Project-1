@@ -1,0 +1,128 @@
+2026-05-22 02:20:46 | INFO     | main | Validate request: price=₹40000.0, return_type=return
+2026-05-22 02:20:48 | INFO     | services.ml_service | ML model and scaler loaded successfully.
+2026-05-22 02:20:48 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.5753, return_type=return
+2026-05-22 02:20:48 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 02:21:09 | INFO     | main | Validate request: price=₹40000.0, return_type=return
+2026-05-22 02:21:16 | ERROR    | services.hive_service | Hive AI HTTP error: 403 — {"return_code":403,"message":"Invalid Auth Token."}
+2026-05-22 02:21:16 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=HIGH, risk_score=0.6625, return_type=return
+2026-05-22 02:21:16 | INFO     | services.decision_engine | Decision output → {'action': 'MANUAL_REVIEW', 'reason': 'Image authenticity could not be determined (API error). ML risk is HIGH — routing to manual review.', 'severity': 'HIGH'}
+2026-05-22 02:21:40 | INFO     | main | Validate request: price=₹40000.0, return_type=returnless
+2026-05-22 02:21:43 | ERROR    | services.hive_service | Hive AI HTTP error: 403 — {"return_code":403,"message":"Invalid Auth Token."}
+2026-05-22 02:21:43 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=HIGH, risk_score=0.6625, return_type=returnless
+2026-05-22 02:21:43 | INFO     | services.decision_engine | Decision output → {'action': 'MANUAL_REVIEW', 'reason': 'Image authenticity could not be determined (API error). ML risk is HIGH — routing to manual review.', 'severity': 'HIGH'}
+2026-05-22 02:24:30 | ERROR    | services.hive_service | Hive AI HTTP error: 403 — {"return_code":403,"message":"Invalid Auth Token."}
+2026-05-22 02:24:55 | ERROR    | services.hive_service | Hive AI HTTP error: 400 — {"return_code":400,"message":"Invalid Auth Method. 'Token' authentication required."}
+2026-05-22 02:25:22 | ERROR    | services.hive_service | Hive AI HTTP error: 401 — {"status_code":401,"message":"Invalid Authorization Header"}
+2026-05-22 02:25:38 | ERROR    | services.hive_service | Hive AI HTTP error: 401 — {"status_code":401,"message":"Invalid Authorization Header"}
+2026-05-22 02:25:58 | ERROR    | services.hive_service | Hive AI HTTP error: 400 — {"status_code":400,"message":"Bad Request"}
+2026-05-22 02:26:15 | ERROR    | services.hive_service | Hive AI HTTP error: 400 — {"status_code":400,"message":"Unexpected Content-Type, expected 'application/json' or 'multipart/form-data'"}
+2026-05-22 02:26:34 | ERROR    | services.hive_service | Hive AI HTTP error: 401 — {"status_code":401,"message":"Invalid Authorization Header"}
+2026-05-22 02:30:42 | INFO     | main | Validate request: price=₹4999.0, return_type=returnless
+2026-05-22 02:30:43 | INFO     | services.ml_service | ML model and scaler loaded successfully.
+2026-05-22 02:30:48 | ERROR    | services.hive_service | Hive AI HTTP error: 403 — {"return_code":403,"message":"Invalid Auth Token."}
+2026-05-22 02:30:48 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.3995, return_type=returnless
+2026-05-22 02:30:48 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 02:31:38 | INFO     | main | Validate request: price=₹4999.0, return_type=return
+2026-05-22 02:31:41 | ERROR    | services.hive_service | Hive AI HTTP error: 403 — {"return_code":403,"message":"Invalid Auth Token."}
+2026-05-22 02:31:41 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.3995, return_type=return
+2026-05-22 02:31:41 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 02:48:09 | ERROR    | services.hive_service | Hive AI HTTP error: 403 — {"return_code":403,"message":"Invalid Auth Token."}
+2026-05-22 02:53:04 | INFO     | main | Validate request: orders=20, returns=2, fraud_flag=1
+2026-05-22 02:53:05 | INFO     | services.ml_service | ML model and scaler loaded successfully.
+2026-05-22 02:53:05 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=HIGH, risk_score=0.9434, return_type=return
+2026-05-22 02:53:05 | INFO     | services.decision_engine | Decision output → {'action': 'MANUAL_REVIEW', 'reason': 'Image authenticity could not be determined (API error). ML risk is HIGH — routing to manual review.', 'severity': 'HIGH'}
+2026-05-22 02:53:28 | INFO     | main | Validate request: orders=20, returns=2, fraud_flag=0
+2026-05-22 02:53:28 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.401, return_type=return
+2026-05-22 02:53:28 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 02:53:40 | INFO     | main | Validate request: orders=20, returns=2, fraud_flag=0
+2026-05-22 02:53:40 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.4409, return_type=return
+2026-05-22 02:53:40 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 02:53:52 | INFO     | main | Validate request: orders=20, returns=1, fraud_flag=0
+2026-05-22 02:53:52 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.4243, return_type=return
+2026-05-22 02:53:52 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 02:54:02 | INFO     | main | Validate request: orders=20, returns=0, fraud_flag=0
+2026-05-22 02:54:02 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.4251, return_type=return
+2026-05-22 02:54:02 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 02:59:41 | INFO     | main | Validate request: orders=20, returns=2, fraud_flag=0
+2026-05-22 02:59:42 | INFO     | services.ml_service | ML model and scaler loaded successfully.
+2026-05-22 02:59:42 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.401, return_type=return
+2026-05-22 02:59:42 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 03:00:04 | INFO     | main | Validate request: orders=20, returns=2, fraud_flag=0
+2026-05-22 03:00:12 | INFO     | services.hive_service | Hive AI v3 response status: 200
+2026-05-22 03:00:12 | INFO     | services.hive_service | Hive v3 parsed — real=0.9981 ai=0.0019 deepfake_tools=0.0000
+2026-05-22 03:00:12 | INFO     | services.decision_engine | Decision input → image_status=AUTHENTIC, confidence=0.9981, risk_level=MEDIUM, risk_score=0.401, return_type=return
+2026-05-22 03:00:12 | INFO     | services.decision_engine | Decision output → {'action': 'PROCEED', 'reason': 'Image AUTHENTIC (confidence 100%) and ML risk is MEDIUM. Return approved — no further action required.', 'severity': 'LOW'}
+2026-05-22 03:02:54 | INFO     | main | Validate request: orders=20, returns=2, fraud_flag=0
+2026-05-22 03:02:55 | INFO     | services.ml_service | ML model and scaler loaded successfully.
+2026-05-22 03:02:55 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.401, return_type=return
+2026-05-22 03:02:55 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 03:03:10 | INFO     | main | Validate request: orders=20, returns=6, fraud_flag=0
+2026-05-22 03:03:11 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.5132, return_type=return
+2026-05-22 03:03:11 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 03:03:42 | INFO     | main | Validate request: orders=20, returns=2, fraud_flag=1
+2026-05-22 03:03:42 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=HIGH, risk_score=0.9434, return_type=return
+2026-05-22 03:03:42 | INFO     | services.decision_engine | Decision output → {'action': 'MANUAL_REVIEW', 'reason': 'Image authenticity could not be determined (API error). ML risk is HIGH — routing to manual review.', 'severity': 'HIGH'}
+2026-05-22 03:03:54 | INFO     | main | Validate request: orders=20, returns=1, fraud_flag=1
+2026-05-22 03:03:54 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=HIGH, risk_score=0.9357, return_type=return
+2026-05-22 03:03:54 | INFO     | services.decision_engine | Decision output → {'action': 'MANUAL_REVIEW', 'reason': 'Image authenticity could not be determined (API error). ML risk is HIGH — routing to manual review.', 'severity': 'HIGH'}
+2026-05-22 03:04:15 | INFO     | main | Validate request: orders=20, returns=9, fraud_flag=0
+2026-05-22 03:04:15 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.5545, return_type=return
+2026-05-22 03:04:15 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 03:04:23 | INFO     | main | Validate request: orders=20, returns=12, fraud_flag=0
+2026-05-22 03:04:23 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.5652, return_type=return
+2026-05-22 03:04:23 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 03:04:32 | INFO     | main | Validate request: orders=20, returns=15, fraud_flag=0
+2026-05-22 03:04:32 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.5652, return_type=return
+2026-05-22 03:04:32 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 03:05:01 | INFO     | main | Validate request: orders=20, returns=10, fraud_flag=0
+2026-05-22 03:05:01 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.5652, return_type=return
+2026-05-22 03:05:01 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 03:05:09 | INFO     | main | Validate request: orders=20, returns=6, fraud_flag=0
+2026-05-22 03:05:09 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.5132, return_type=return
+2026-05-22 03:05:09 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 03:05:18 | INFO     | main | Validate request: orders=20, returns=6, fraud_flag=0
+2026-05-22 03:05:18 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.5667, return_type=return
+2026-05-22 03:05:18 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 03:06:29 | INFO     | main | Validate request: orders=200, returns=6, fraud_flag=0
+2026-05-22 03:06:29 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.5391, return_type=return
+2026-05-22 03:06:29 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 03:06:40 | INFO     | main | Validate request: orders=200, returns=6, fraud_flag=0
+2026-05-22 03:06:40 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.5392, return_type=return
+2026-05-22 03:06:40 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 08:39:23 | INFO     | main | Validate request: orders=20, returns=2, fraud_flag=0
+2026-05-22 08:39:26 | INFO     | services.ml_service | ML model and scaler loaded successfully.
+2026-05-22 08:39:30 | INFO     | services.hive_service | Hive AI v3 response status: 200
+2026-05-22 08:39:30 | INFO     | services.hive_service | Hive v3 parsed — real=0.9981 ai=0.0019 deepfake_tools=0.0000
+2026-05-22 08:39:30 | INFO     | services.decision_engine | Decision input → image_status=AUTHENTIC, confidence=0.9981, risk_level=LOW, risk_score=0.0073, return_type=returnless
+2026-05-22 08:39:30 | INFO     | services.decision_engine | Decision output → {'action': 'PROCEED', 'reason': 'Image AUTHENTIC (confidence 100%) and ML risk is LOW. Return approved — no further action required.', 'severity': 'LOW'}
+2026-05-22 08:39:50 | INFO     | main | Validate request: orders=20, returns=14, fraud_flag=0
+2026-05-22 08:39:53 | INFO     | services.hive_service | Hive AI v3 response status: 200
+2026-05-22 08:39:53 | INFO     | services.hive_service | Hive v3 parsed — real=0.9981 ai=0.0019 deepfake_tools=0.0000
+2026-05-22 08:39:53 | INFO     | services.decision_engine | Decision input → image_status=AUTHENTIC, confidence=0.9981, risk_level=MEDIUM, risk_score=0.6501, return_type=returnless
+2026-05-22 08:39:53 | INFO     | services.decision_engine | Decision output → {'action': 'PROCEED', 'reason': 'Image AUTHENTIC (confidence 100%) and ML risk is MEDIUM. Return approved — no further action required.', 'severity': 'LOW'}
+2026-05-22 08:40:21 | INFO     | main | Validate request: orders=200, returns=77, fraud_flag=0
+2026-05-22 08:40:23 | INFO     | services.hive_service | Hive AI v3 response status: 200
+2026-05-22 08:40:23 | INFO     | services.hive_service | Hive v3 parsed — real=0.9981 ai=0.0019 deepfake_tools=0.0000
+2026-05-22 08:40:23 | INFO     | services.decision_engine | Decision input → image_status=AUTHENTIC, confidence=0.9981, risk_level=LOW, risk_score=0.5379, return_type=returnless
+2026-05-22 08:40:23 | INFO     | services.decision_engine | Decision output → {'action': 'PROCEED', 'reason': 'Image AUTHENTIC (confidence 100%) and ML risk is LOW. Return approved — no further action required.', 'severity': 'LOW'}
+2026-05-22 08:40:31 | INFO     | main | Validate request: orders=200, returns=77, fraud_flag=1
+2026-05-22 08:40:37 | INFO     | services.hive_service | Hive AI v3 response status: 200
+2026-05-22 08:40:37 | INFO     | services.hive_service | Hive v3 parsed — real=0.9981 ai=0.0019 deepfake_tools=0.0000
+2026-05-22 08:40:37 | INFO     | services.decision_engine | Decision input → image_status=AUTHENTIC, confidence=0.9981, risk_level=MEDIUM, risk_score=0.8753, return_type=returnless
+2026-05-22 08:40:37 | INFO     | services.decision_engine | Decision output → {'action': 'PROCEED', 'reason': 'Image AUTHENTIC (confidence 100%) and ML risk is MEDIUM. Return approved — no further action required.', 'severity': 'LOW'}
+2026-05-22 08:45:43 | INFO     | main | Validate request: orders=200, returns=77, fraud_flag=0
+2026-05-22 08:45:45 | INFO     | services.ml_service | ML model and scaler loaded successfully.
+2026-05-22 08:45:45 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.6393, return_type=return
+2026-05-22 08:45:45 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 08:45:53 | INFO     | main | Validate request: orders=200, returns=77, fraud_flag=0
+2026-05-22 08:45:53 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.6291, return_type=return
+2026-05-22 08:45:53 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 08:46:00 | INFO     | main | Validate request: orders=200, returns=77, fraud_flag=0
+2026-05-22 08:46:00 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.4188, return_type=return
+2026-05-22 08:46:00 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 08:46:10 | INFO     | main | Validate request: orders=200, returns=77, fraud_flag=0
+2026-05-22 08:46:10 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.5379, return_type=return
+2026-05-22 08:46:10 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 08:46:21 | INFO     | main | Validate request: orders=200, returns=77, fraud_flag=0
+2026-05-22 08:46:21 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.4188, return_type=return
+2026-05-22 08:46:21 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}

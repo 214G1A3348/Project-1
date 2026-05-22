@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReturnGuard AI — Enterprise Return Validation</title>
+  <meta name="description" content="Production-grade AI-powered return fraud detection system with Hive AI deepfake detection and ML risk scoring." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+
+<!-- ── Top Navigation ───────────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="brand-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <span class="brand-name">ReturnGuard <span class="brand-ai">AI</span></span>
+  </div>
+  <div class="nav-meta">
+    <span class="nav-badge">Enterprise</span>
+    <span class="nav-badge live-badge"><span class="pulse-dot"></span>Hive AI Live</span>
+  </div>
+</nav>
+
+<!-- ── Main Layout ───────────────────────────────────────────────── -->
+<div class="layout">
+
+  <!-- Left Panel: Input + Demo -->
+  <aside class="sidebar">
+
+    <!-- Demo Customers -->
+    <div class="card" id="demo-panel">
+      <div class="card-header">
+        <span class="card-icon">👥</span>
+        <h2 class="card-title">Demo Customers</h2>
+        <span class="tag">5 scenarios</span>
+      </div>
+      <p class="card-sub">Click a customer to run a full validation with real Hive AI + ML.</p>
+      <div class="customer-list" id="customerList">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Manual Input -->
+    <div class="card" id="manual-panel">
+      <div class="card-header">
+        <span class="card-icon">✏️</span>
+        <h2 class="card-title">Custom Validation</h2>
+      </div>
+
+      <form id="validateForm" enctype="multipart/form-data">
+        <!-- Image -->
+        <div class="form-group">
+          <label class="form-label">Product Image</label>
+          <div class="upload-zone" id="uploadZone">
+            <input type="file" id="imageFile" name="image" accept="image/*" hidden />
+            <div class="upload-inner" onclick="document.getElementById('imageFile').click()">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span id="uploadLabel">Click to upload or drag & drop</span>
+            </div>
+          </div>
+          <p class="form-hint">— or —</p>
+          <input type="url" name="image_url" id="imageUrl" class="form-input" placeholder="Paste image URL …" />
+        </div>
+
+        <!-- Return Type -->
+        <div class="form-group">
+          <label class="form-label">Return Type</label>
+          <div class="toggle-group">
+            <label class="toggle-option">
+              <input type="radio" name="return_type" value="return" checked />
+              <span>Return</span>
+            </label>
+            <label class="toggle-option">
+              <input type="radio" name="return_type" value="returnless" />
+              <span>Returnless</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Row 1: Orders & Returns -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Total Orders Count</label>
+            <input type="number" name="total_orders_count" class="form-input" value="20" min="1" max="500" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Total Returns Count</label>
+            <input type="number" name="total_returns_count" class="form-input" value="2" min="0" max="500" />
+          </div>
+        </div>
+
+        <!-- Row 2: Account Age & Avg Return Time -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Account Age (days)</label>
+            <input type="number" name="account_age" class="form-input" value="365" min="1" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Avg Return Time (days after delivery)</label>
+            <input type="number" name="average_return_time" class="form-input" value="10" min="0" max="90" />
+          </div>
+        </div>
+
+        <!-- Row 3: Fraud History -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Fraud History Flag</label>
+            <select name="fraud_history_flag" class="form-input">
+              <option value="0">No Prior Fraud (0)</option>
+              <option value="1">Prior Fraud Detected (1)</option>
+            </select>
+          </div>
+        </div>
+
+
+        <button type="submit" class="btn-primary" id="submitBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Run Validation
+        </button>
+      </form>
+    </div>
+  </aside>
+
+  <!-- Right Panel: Results -->
+  <main class="main-panel">
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h2>Enterprise Return Validation</h2>
+      <p>Select a demo customer or fill in the form to run AI-powered fraud analysis with real Hive AI deepfake detection.</p>
+      <div class="feature-chips">
+        <span class="chip">🔍 Hive AI Deepfake Detection</span>
+        <span class="chip">🤖 ML Risk Scoring</span>
+        <span class="chip">⚡ Parallel Execution</span>
+        <span class="chip">💰 INR Pricing</span>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-state hidden" id="loadingState">
+      <div class="loader-ring"></div>
+      <h3>Running AI Analysis …</h3>
+      <div class="loading-steps">
+        <div class="load-step" id="step1"><div class="step-dot active"></div><span>Calling Hive AI API</span></div>
+        <div class="load-step" id="step2"><div class="step-dot"></div><span>ML Risk Prediction</span></div>
+        <div class="load-step" id="step3"><div class="step-dot"></div><span>Decision Engine</span></div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-panel hidden" id="resultsPanel">
+
+      <!-- Customer Header -->
+      <div class="result-header" id="resultHeader"></div>
+
+      <!-- Action Banner -->
+      <div class="action-banner" id="actionBanner"></div>
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card" id="statImage"></div>
+        <div class="stat-card" id="statConfidence"></div>
+        <div class="stat-card" id="statRisk"></div>
+        <div class="stat-card" id="statPrice"></div>
+      </div>
+
+      <!-- Detail Grid -->
+      <div class="detail-grid">
+        <!-- Image Analysis -->
+        <div class="detail-card">
+          <h3 class="detail-title">🔍 Image Authenticity (Hive AI)</h3>
+          <div class="gauge-wrap">
+            <canvas id="gaugeCanvas" width="200" height="110"></canvas>
+          </div>
+          <div class="score-bars" id="imageBars"></div>
+          <div class="hive-api-tag" id="hiveTag"></div>
+        </div>
+
+        <!-- ML Risk -->
+        <div class="detail-card">
+          <h3 class="detail-title">🤖 ML Risk Analysis</h3>
+          <div class="risk-meter" id="riskMeter"></div>
+          <div class="feature-importances" id="featureChart"></div>
+        </div>
+      </div>
+
+      <!-- Explanation Panel -->
+      <div class="explanation-panel" id="explanationPanel"></div>
+
+      <!-- Decision Flow -->
+      <div class="detail-card">
+        <h3 class="detail-title">⚖️ Decision Flow</h3>
+        <div class="flow-diagram" id="flowDiagram"></div>
+      </div>
+
+    </div>
+
+    <!-- Error State -->
+    <div class="error-state hidden" id="errorState">
+      <div class="error-icon">⚠️</div>
+      <h3>Validation Error</h3>
+      <p id="errorMessage"></p>
+      <button class="btn-secondary" onclick="resetUI()">Try Again</button>
+    </div>
+
+  </main>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

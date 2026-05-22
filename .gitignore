@@ -1,0 +1,6 @@
+venv/
+.env
+__pycache__/
+*.pyc
+trained_model/
+.DS_Store
