@@ -323,7 +323,11 @@ function renderResults(data, avatarIdx = 0) {
     <div class="risk-bar-track" style="position:relative">
       <div class="risk-indicator" style="left:${riskPct}%"></div>
     </div>
-    <div class="risk-labels"><span>Low</span><span>Medium</span><span>High</span></div>`;
+    <div class="risk-labels" style="position:relative; height: 16px;">
+      <span style="position:absolute; left:0%;">0% (Low)</span>
+      <span style="position:absolute; left:50%; transform:translateX(-50%);">50% (Med)</span>
+      <span style="position:absolute; left:90%; transform:translateX(-50%);">90% (High)</span>
+    </div>`;
 
   // ── Feature Importances ───────────────────────────────────────────
   const fi = data.feature_importances || {};

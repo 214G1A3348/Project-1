@@ -126,3 +126,10 @@
 2026-05-22 08:46:21 | INFO     | main | Validate request: orders=200, returns=77, fraud_flag=0
 2026-05-22 08:46:21 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.4188, return_type=return
 2026-05-22 08:46:21 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). Sending to agent for manual image check.', 'severity': 'MEDIUM'}
+2026-05-22 08:49:44 | INFO     | main | Validate request: orders=200, returns=77, fraud_flag=0
+2026-05-22 08:49:46 | INFO     | services.ml_service | ML model and scaler loaded successfully.
+2026-05-22 08:49:46 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=LOW, risk_score=0.4188, return_type=return
+2026-05-22 08:49:46 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). ML risk is LOW — routing to agent for routine image check.', 'severity': 'LOW'}
+2026-05-22 08:49:54 | INFO     | main | Validate request: orders=200, returns=77, fraud_flag=0
+2026-05-22 08:49:54 | INFO     | services.decision_engine | Decision input → image_status=UNKNOWN, confidence=0.5, risk_level=MEDIUM, risk_score=0.6385, return_type=return
+2026-05-22 08:49:54 | INFO     | services.decision_engine | Decision output → {'action': 'SEND_AGENT', 'reason': 'Image authenticity could not be determined (API error). ML risk is MEDIUM — routing to agent for routine image check.', 'severity': 'MEDIUM'}
