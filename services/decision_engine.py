@@ -94,17 +94,19 @@ def decide(
 
 def map_image_status(is_deepfake: bool | None, confidence: float | None) -> str:
     """
-    Adaptive mapping from Hive AI output → image status label.
-    No rigid thresholds — uses relative confidence spread.
+    Maps Hive AI output → image status label.
+    is_deepfake = True when fake_score >= 5%
     """
     if is_deepfake is None or confidence is None:
         return "UNKNOWN"
 
     if is_deepfake:
-        if confidence >= 0.80:
+        if confidence >= 0.40:   # 40%+ fake signal → definitely FAKE
             return "FAKE"
-        return "SUSPICIOUS"
+        if confidence >= 0.10:   # 10-40% → SUSPICIOUS
+            return "SUSPICIOUS"
+        return "SUSPICIOUS"      # even 5-10% → flag as SUSPICIOUS
     else:
-        if confidence >= 0.70:
+        if confidence >= 0.90:   # 90%+ real → AUTHENTIC
             return "AUTHENTIC"
-        return "SUSPICIOUS"
+        return "SUSPICIOUS"      # anything less → SUSPICIOUS

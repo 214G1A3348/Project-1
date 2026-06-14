@@ -95,14 +95,32 @@ def _parse_v3_response(data: dict) -> dict:
         real_score = class_map.get("not_ai_generated", 0.0)
         ai_score   = class_map.get("ai_generated", 0.0)
 
-        # Also check for any deepfake-specific classes (face-swap tools)
-        deepfake_tools = ["liveportrait", "sadtalker", "aniportrait", "makeittalk", "hedra", "hallo"]
-        deepfake_score = sum(class_map.get(t, 0.0) for t in deepfake_tools)
+        # ALL known AI image generators (Hive returns individual scores per tool)
+        ai_image_generators = [
+            "dalle", "stablediffusion", "stablediffusioninpaint", "sdxlinpaint",
+            "flux", "lcm", "pixart", "glide", "midjourney",
+            "bingimagecreator", "adobefirefly", "recraft", "leonardo",
+            "luminagpt", "var", "other_image_generators",
+        ]
+        # Deepfake / video face-swap tools
+        deepfake_tools = [
+            "liveportrait", "sadtalker", "aniportrait", "makeittalk",
+            "hedra", "hallo", "sora", "pika", "haiper", "kling",
+            "luma", "runway", "hailuo", "mochi", "hunyuan",
+            "cogvideos", "pyramidflows", "mcnet",
+        ]
 
-        # Combined fake probability
-        fake_score = min(ai_score + deepfake_score, 1.0)
-        is_deepfake = fake_score > real_score
-        confidence = max(fake_score, real_score)
+        generator_score = sum(class_map.get(t, 0.0) for t in ai_image_generators)
+        deepfake_score  = sum(class_map.get(t, 0.0) for t in deepfake_tools)
+
+        # Combined fake probability — use the higher of:
+        # (a) the overall ai_generated class, or
+        # (b) sum of individual generator tool scores
+        fake_score = min(max(ai_score, generator_score) + deepfake_score, 1.0)
+
+        # Flag as deepfake/AI if fake signal exceeds 5% (lowered from majority-wins)
+        is_deepfake = fake_score >= 0.05
+        confidence = fake_score if is_deepfake else real_score
 
         logger.info(f"Hive v3 parsed — real={real_score:.4f} ai={ai_score:.4f} deepfake_tools={deepfake_score:.4f}")
 
